@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">Add manga</h1>
+<form action="" method="post" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.name.label }}
+        {{ form.name(class="form-control") }}
+        {% for error in form.name.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        {{ form.main_universe.label }}
+        {{ form.main_universe(class="form-control") }}
+        {% for error in form.main_universe.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        {{ form.about.label }}
+        {{ form.about(class="form-control") }}
+        {% for error in form.about.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        {{ form.preview.label }}
+        {{ form.preview(class="form-control") }}
+        {% for error in form.preview.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="mb-3 submit">
+        {{ form.submit(type="submit", class="btn btn-primary") }}
+    </div>
+</form>
+{% endblock %}

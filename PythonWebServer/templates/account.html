@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>User: {{ user.username }}</h1>
+<p class="lead">Comments:</p>
+
+{% for comment in comments %}
+<br>
+<div class="card text-black border-dark bg-light mb-3">
+    <div class="card-body">
+        <h3>For manga: {{ comment.post }}</h3>
+        <h3>{{ comment.author }}</h3>
+        <h4>{{ comment.date.date() }} {{ comment.date.hour }}:{{ comment.date.minute }}:{{ comment.date.second }}</h4>
+        <h5>{{ comment.rating }} stars</h5>
+        <p>{{ comment.data }}</p>
+    </div>
+</div>
+{% endfor %}
+
+<a class="btn btn-dark" href="/account/logout">Log out</a>
+{% endblock %}

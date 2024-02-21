@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">Add comment</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.data.label }}
+        {{ form.data(class="form-control") }}
+        {% for error in form.data.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        {{ form.rating.label }}
+        {{ form.rating(class="form-control") }}
+        {% for error in form.rating.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="mb-3 submit">
+        {{ form.submit(type="submit", class="btn btn-primary") }}
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<img src="/static/image/manga/{{ manga.id }}/preview.jpg" width="30%" alt="Preview">
+<h1 class="title">{{ manga.name }}</h1>
+{% if current_user.id == manga.author %}
+<a href="/library/{{ manga.id }}/change_manga" class="btn btn-dark">Change</a>
+<a href="/library/{{ manga.id }}/add_chapter" class="btn btn-dark">Add chapter</a>
+{% endif %}
+<h2 class="subtitle">Main universe: {{ manga.main_universe }}</h2>
+<h3>Author: {{ author.username }}</h3>
+<p class="lead">About:</p>
+<p>{{ manga.about }}</p>
+
+<p class="lead">Chapters:</p>
+{% for chapter in chapters %}
+<a href="/library/{{ manga.id }}/chapters/{{ chapter }}">{{ chapter }}</a><br>
+{% endfor %}
+
+<h2>User rating: {{ manga.rating }}</h2>
+
+{% for comment in comments %}
+<br>
+<div class="card text-black border-dark bg-light mb-3">
+    <div class="card-body">
+        <h3>{{ comment.author }}</h3>
+        <h4>{{ comment.date.date() }} {{ comment.date.hour }}:{{ comment.date.minute }}:{{ comment.date.second }}</h4>
+        <h5>{{ comment.rating }} stars</h5>
+        <p>{{ comment.data }}</p>
+    </div>
+</div>
+{% endfor %}
+<a href="/library/{{ manga.id }}/comment" class="btn btn-dark">Leave a comment</a>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center">
+    <h1>{{ chapter_name }}</h1>
+    {% for page in pages %}
+    <img width="60%" height="auto" src="/static/image/manga/{{ manga_id }}/chapters/{{ chapter_name }}/{{ page }}.jpg">
+    {% endfor %}
+    <br><br>
+    <a class="btn btn-dark" href="/library/{{ manga_id }}">Leave</a>
+</div>
+{% endblock %}
